@@ -222,7 +222,7 @@ di `mis'
 qui scalar p_mismeasure_allied=`mis'   
 qui scalar p_mismeasure_ennemy=`mis'
 
-qui do ..\progs\code_tableB9_sub.do
+qui do ../progs/code_tableB9_sub.do
 
 qui use MC3_result, clear
 qui save MC3_result_`mis', replace
@@ -246,7 +246,7 @@ foreach mis of numlist $range  {
 di `mis'
 qui scalar p_mismeasure_allied=0   
 qui scalar p_mismeasure_ennemy=`mis'
-qui do ..\progs\code_tableB9_sub.do
+qui do ../progs/code_tableB9_sub.do
 qui use MC3_result, clear
 qui save MC3_result_`mis', replace
 qui cap erase MC3_result.dta
@@ -265,7 +265,7 @@ foreach mis of numlist $range  {
 di `mis'
 qui scalar p_mismeasure_allied=`mis'   
 qui scalar p_mismeasure_ennemy=0
-qui do ..\progs\code_tableB9_sub.do
+qui do ../progs/code_tableB9_sub.do
 qui use MC3_result, clear
 qui save MC3_result_`mis', replace
 qui cap erase MC3_result.dta

@@ -104,13 +104,13 @@ mata for(i = 1; i <= rows(adjacency); i++) {
 qui use temp_2sls_conley.dta, clear
 
 		if ("`partial'"=="partial"){
-		qui do  ..\progs\nw2sls_partial
+		qui do  ../progs/nw2sls_partial
 		nw2sls_partial `depvar'  `regs', end(`end') iv(`iv')  correc(`Nclus')
 		di "Hansen J (p-value)=  " e(pValueHansen)
 		di "Hansen J =  " e(Hansen)
 		}
 		if ("`partial'"==""){
-		qui do  ..\progs\nw2sls
+		qui do  ../progs/nw2sls
 		nw2sls `depvar'  `regs', end(`end') iv(`iv')
 		}
 
@@ -118,7 +118,7 @@ qui use temp_2sls_conley.dta, clear
 if substr("`end'",1,1)==""{
 }
 else{
-qui do ..\progs\KP_stat
+qui do ../progs/KP_stat
 qui KP_stat `depvar'  `regs', end(`end') iv(`iv') correc(`Nclus')
 di "Kleibergen Paap rk statistic =  " KPstat
 

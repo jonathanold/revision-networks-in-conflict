@@ -19,13 +19,13 @@ collapse (mean) true* false* a, by(dyad)
 
 
 twoway (histogram true_minus_base_proba, percent bin(50) fcolor(gs5) lcolor(black)) (histogram false_minus_base_proba, percent bin(50) fcolor(gs12) lcolor(black)), ytitle(Frequency) xtitle(Predicted Probability of Enmity) title(Cross-Dyad Distribution of Predicted Probability of Enmity, size(medlarge)) subtitle(Dark Sample: Observed Enmities  -  Light Sample: Other Dyads, size(medsmall)) legend(off) scheme(s1mono)
-graph save "..\results\endo_predicted_proba_enmities.gph", replace	
-graph export "..\results\endo_predicted_proba_enmities.pdf", as(pdf) replace 
+graph save "../results/endo_predicted_proba_enmities.gph", replace	
+graph export "../results/endo_predicted_proba_enmities.pdf", as(pdf) replace 
 
 
 twoway (histogram true_plus_base_proba, percent bin(50) fcolor(gs5) lcolor(black)) (histogram false_plus_base_proba, percent bin(50) fcolor(gs12) lcolor(black)), ytitle(Frequency) xtitle(Predicted Probability of Alliance) title(Cross-Dyad Distribution of Predicted Probability of Alliance, size(medlarge)) subtitle(Dark Sample: Observed Alliances  -  Light Sample: Other Dyads, size(medsmall)) legend(off) scheme(s1mono)
-graph save "..\results\endo_predicted_proba_alliances.gph", replace	
-graph export "..\results\endo_predicted_proba_alliances.pdf", as(pdf) replace 
+graph save "../results/endo_predicted_proba_alliances.gph", replace	
+graph export "../results/endo_predicted_proba_alliances.pdf", as(pdf) replace 
 
 
 **
@@ -72,7 +72,7 @@ drop _merge
 qui sort MCref MCref_d
 qui save temp_aplus, replace
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 expand 3
 bysort MCref MCref_d: gen alternative=[_n]-2 
 keep MCref MCref_d alternative $network_cov
@@ -189,7 +189,7 @@ replace aminus=(predicted_link_d==-1) if predicted_link_d!=.
 drop predicted*
 save temp_aminus.dta, replace
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 gen mcdraw=`d'
 append using endo_goodness
 save endo_goodness.dta, replace
@@ -235,7 +235,7 @@ replace aminus=(predicted_link_d==-1) if predicted_link_d!=.
 drop predicted*
 save temp_aminus.dta, replace
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 gen mcdraw=`d'
 append using endo_goodness
 save endo_goodness.dta, replace
@@ -261,7 +261,7 @@ egen data_dplus=max(d_dplus)
 
 
 collapse (mean) avg_dplus=dplus avg_dminus=dminus (sd) sd_dplus=dplus sd_dminus=dminus, by(data)
-outsheet using "..\results\endo_goodness_fit_avg_degrees.xls", replace
+outsheet using "../results/endo_goodness_fit_avg_degrees.xls", replace
 
 * Histograms degrees
 use endo_goodness, clear
@@ -303,8 +303,8 @@ twoway (connected degree_plus_ degree if data==1  , mcolor(black) msymbol(circle
 	   text(1 3 "Data", color(black))  ///  
 	   text(20 4 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("# Fighting groups") xtitle("Degrees (+1)") 
-graph save "..\results\endo_goodness_fit_degplus.gph", replace	
-graph export "..\results\endo_goodness_fit_graph_degplus.pdf", as(pdf) replace 
+graph save "../results/endo_goodness_fit_degplus.gph", replace	
+graph export "../results/endo_goodness_fit_graph_degplus.pdf", as(pdf) replace 
 
 
 twoway (connected degree_minus_ degree if data==1  , mcolor(black) msymbol(circle_hollow) lcolor(black) scheme(s1mono) xscale(range(0 15))) ///	
@@ -314,8 +314,8 @@ twoway (connected degree_minus_ degree if data==1  , mcolor(black) msymbol(circl
 	   text(1 3 "Data", color(black))  ///  
 	   text(20 4 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("# Fighting groups") xtitle("Degrees (-1)") 
-graph save "..\results\endo_goodness_fit_degminus.gph", replace	
-graph export "..\results\endo_goodness_fit_graph_degminus.pdf", as(pdf) replace 
+graph save "../results/endo_goodness_fit_degminus.gph", replace	
+graph export "../results/endo_goodness_fit_graph_degminus.pdf", as(pdf) replace 
 
 
 
@@ -398,8 +398,8 @@ twoway (connected interior_ value if data==1  , mcolor(black) msymbol(circle_hol
 	   text(6 2 "Data", color(black))  ///  
 	   text(5 1 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("# Fighting groups") xtitle("Degrees (+1)") 
-graph save "..\results\endo_goodness_fit_interior.gph", replace	
-graph export "..\results\endo_goodness_fit_interior.pdf", as(pdf) replace 
+graph save "../results/endo_goodness_fit_interior.gph", replace	
+graph export "../results/endo_goodness_fit_interior.pdf", as(pdf) replace 
 
 
 
@@ -456,8 +456,8 @@ twoway (connected Common_ degree if data==1  , mcolor(black) msymbol(circle_holl
 	   text(.15 5 "Data", color(black))  ///  
 	   text(.01 5 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("share of connected dyads") xtitle("# common neighbors") 
-graph save "..\results\endo_goodness_fit_common.gph", replace	
-graph export "..\results\endo_goodness_fit_graph_common.pdf", as(pdf) replace 
+graph save "../results/endo_goodness_fit_common.gph", replace	
+graph export "../results/endo_goodness_fit_graph_common.pdf", as(pdf) replace 
 
 twoway (connected Common_enemy_ degree if data==1  , mcolor(black) msymbol(circle_hollow) lcolor(black) scheme(s1mono) xscale(range(0 15))) ///	
 (connected Common_enemy_ degree if data==0, msymbol(smcircle_hollow) lcolor(gs8)) ///	
@@ -466,8 +466,8 @@ twoway (connected Common_enemy_ degree if data==1  , mcolor(black) msymbol(circl
 	   text(.15 5 "Data", color(black))  ///  
 	   text(.01 2 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("share of connected dyads") xtitle("# common enemies") 
-graph save "..\results\endo_goodness_fit_common_enemy_.gph", replace	
-graph export "..\results\endo_goodness_fit_graph_common_enemy_.pdf", as(pdf) replace 
+graph save "../results/endo_goodness_fit_common_enemy_.gph", replace	
+graph export "../results/endo_goodness_fit_graph_common_enemy_.pdf", as(pdf) replace 
 
 
 twoway (connected Common_allied_ degree if data==1  , mcolor(black) msymbol(circle_hollow) lcolor(black) scheme(s1mono) xscale(range(0 15))) ///	
@@ -477,8 +477,8 @@ twoway (connected Common_allied_ degree if data==1  , mcolor(black) msymbol(circ
 	   text(.15 5 "Data", color(black))  ///  
 	   text(.01 2 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("share of connected dyads") xtitle("# common allied") 
-graph save "..\results\endo_goodness_fit_common_allied_.gph", replace	
-graph export "..\results\endo_goodness_fit_graph_common_allied_.pdf", as(pdf) replace 
+graph save "../results/endo_goodness_fit_common_allied_.gph", replace	
+graph export "../results/endo_goodness_fit_graph_common_allied_.pdf", as(pdf) replace 
 
 
 twoway (connected Common_all_en_ degree if data==1  , mcolor(black) msymbol(circle_hollow) lcolor(black) scheme(s1mono) xscale(range(0 15))) ///	
@@ -488,5 +488,5 @@ twoway (connected Common_all_en_ degree if data==1  , mcolor(black) msymbol(circ
 	   text(.15 5 "Data", color(black))  ///  
 	   text(.01 2 "Monte Carlo", color(gs8)) ///  
 	   legend(off) ytitle("share of connected dyads") xtitle("# common antagonistic neighbors") 
-graph save "..\results\endo_goodness_fit_common_all_en_.gph", replace	
-graph export "..\results\endo_goodness_fit_graph_common_all_en_.pdf", as(pdf) replace 	
+graph save "../results/endo_goodness_fit_common_all_en_.gph", replace	
+graph export "../results/endo_goodness_fit_graph_common_all_en_.pdf", as(pdf) replace 	

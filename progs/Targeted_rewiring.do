@@ -176,7 +176,7 @@ save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
 global time "1998(1)2010"
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save bench_simul, replace
 
@@ -211,7 +211,7 @@ use bench_aminus, clear
 save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save avgbench_simul, replace
 collapse(sum) EFFORT
@@ -228,7 +228,7 @@ replace aminus=0
 save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 keep EFFORT year MCref
 rename EFFORT no_enemies_EFFORT
@@ -332,7 +332,7 @@ qui drop DRCgov DRCgov_d
 qui drop IDlink IDlink_d
 qui save temp_aminus, replace
 qui global time "1000"
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui keep EFFORT year MCref
 qui collapse (sum) EFFORT 
@@ -573,7 +573,7 @@ save temp_bench_dyadic.dta, replace
 **
 * foreign groups
 **
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group FOREIGNGROUPS
 rename Group name 
 rename FOREIGNGROUPS Foreign_FZ
@@ -662,7 +662,7 @@ drop _merge
 gen subset=Nfighting * ((MERGE ==1  )  & (MERGE_d  ==1 | DRCgov_d  ==1))
 collapse (sum) Nfighting subset
 scalar obs_bilateral_share= round(subset / Nfighting, .01)
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -691,7 +691,7 @@ log close
 **
 * Ituri-related groups
 ***
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group ITURI
 rename Group name 
 destring ITURI, gen(Ituri)
@@ -779,7 +779,7 @@ drop _merge
 gen subset=Nfighting * ((MERGE ==1  )  & (MERGE_d  ==1 | DRCgov_d  ==1))
 collapse (sum) Nfighting subset
 scalar obs_bilateral_share= round(subset / Nfighting, .01)
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -808,7 +808,7 @@ log close
 **
 * RCD&UG&RWA
 **
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group RCDUGRWA
 rename Group name 
 destring RCDUGRWA, gen(remove)
@@ -896,7 +896,7 @@ drop _merge
 gen subset=Nfighting * ((MERGE ==1  )  & (MERGE_d  ==1 | DRCgov_d  ==1))
 collapse (sum) Nfighting subset
 scalar obs_bilateral_share= round(subset / Nfighting, .01)
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -940,7 +940,7 @@ rename MCref MCref_d
 rename group group_d
 save tempM_d.dta, replace
 
-use ..\original_data\structural_covariates, clear
+use ../original_data/structural_covariates, clear
 saveold temp_struc_cov.dta, replace
 use temp_struc_cov.dta, clear 
 tab different_Hutu_Tutsi
@@ -991,7 +991,7 @@ table aplus different_Hutu_Tutsi
 drop different_Hutu_Tutsi same*
 sort MCref MCref_d
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 keep EFFORT year MCref
 rename EFFORT all_neutral_EFFORT
@@ -1021,7 +1021,7 @@ replace aplus=1 if same_Hutu_Tutsi==1
 drop different_Hutu_Tutsi same*
 sort MCref MCref_d
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 keep EFFORT year MCref
 rename EFFORT all_alliances_EFFORT

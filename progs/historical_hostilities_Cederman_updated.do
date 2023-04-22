@@ -1,9 +1,10 @@
+
 *This do-file adds historical hostilities from Cederman*
 *********************************************************
 *open Cederman
 *clear all
 clear
-use ..\original_data\CBR_JCR_repdata.dta 
+use ../original_data/CBR_JCR_repdata.dta 
 keep dyadid ccode year group grpname egip incidence
 *keep only ethnic groups that linked to ACLED fighting groups in DRC
 gen junk=0

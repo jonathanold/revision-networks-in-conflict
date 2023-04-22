@@ -1,3 +1,4 @@
+
 * label unnamed covariates
 
 cap label var year "year"

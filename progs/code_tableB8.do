@@ -6,7 +6,7 @@ global drop all
 
 *Prepare datasets
 
-use ..\original_data\KRTZ_monadic_TRMM50.dta, clear		
+use ../original_data/KRTZ_monadic_TRMM50.dta, clear		
 keep group year rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 meanc_rain0 sqmeanc_rain0 meanc_rain1 sqmeanc_rain1 rain_neutral0 sqrain_neutral0 rain_neutral1 sqrain_neutral1
 foreach var in rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 meanc_rain0 sqmeanc_rain0 meanc_rain1 sqmeanc_rain1 rain_neutral0 sqrain_neutral0 rain_neutral1 sqrain_neutral1{
 	rename 	`var' TRMM50_`var'
@@ -15,7 +15,7 @@ foreach var in rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_en
 sort group year		 
 save temp_TRMM50.dta, replace
 
-use ..\original_data\KRTZ_monadic_GPCP.dta, clear		
+use ../original_data/KRTZ_monadic_GPCP.dta, clear		
 keep group year rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 meanc_rain0 sqmeanc_rain0 meanc_rain1 sqmeanc_rain1 rain_neutral0 sqrain_neutral0 rain_neutral1 sqrain_neutral1
 foreach var in rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 meanc_rain0 sqmeanc_rain0 meanc_rain1 sqmeanc_rain1 rain_neutral0 sqrain_neutral0 rain_neutral1 sqrain_neutral1{
 	rename 	`var' GPCP_`var'
@@ -94,7 +94,7 @@ erase temp_GPCP.dta
 *****************************
 clear
 
-qui do  ..\progs\my_spatial_2sls
+qui do  ../progs/my_spatial_2sls
 
 global TRMM50_IV_rest "TRMM50_rain_enemies1 TRMM50_sqrain_enemies1 TRMM50_rain_allies1 TRMM50_sqrain_allies1" 
 global GPCP_IV_rest "GPCP_rain_enemies1 GPCP_sqrain_enemies1 GPCP_rain_allies1 GPCP_sqrain_allies1" 
@@ -379,7 +379,7 @@ eststo clear
 *------------------------
 
 clear all
-qui do  ..\progs\my_spatial_2sls
+qui do  ../progs/my_spatial_2sls
 global lag_specif_ols "lag(1000000) dist(150) lagdist(1000000) "
 global lag_specif "lag(1000000) dist(150) lagdist(1000000) partial "
 global clus "r cl(id)" 

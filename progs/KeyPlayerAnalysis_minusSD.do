@@ -173,7 +173,7 @@ save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
 global time "1998(1)2010"
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save bench_simul, replace
 
@@ -212,7 +212,7 @@ use bench_aminus, clear
 save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save avgbench_simul, replace
 collapse(sum) EFFORT
@@ -256,7 +256,7 @@ qui drop if MCref_d==RWApost & `kp'==RWApre
 qui drop if MCref_d==RWApre & `kp'==RWApost
 qui sort MCref MCref_d
 qui save temp_aplus, replace
-qui qui do ..\progs\eq_simul.do
+qui qui do ../progs/eq_simul.do
 qui use simul, clear
 qui save KPcounter_simul_`kp', replace
 }

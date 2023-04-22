@@ -3,7 +3,7 @@
 * SECTIONS 5 and 6 and Appendix B.2
 *-------------------------------------
 
-* All results are stored in the subfolder \results
+* All results are stored in the subfolder /results
 * Some results being exported as log file, it is important not to use the "quietly" STATA command
 
 clear all
@@ -26,43 +26,43 @@ save KRTZ_dyadic_ref, replace
 * SECTION 5.1 - REMOVING ARMED GROUPS
 * TABLE 4 AND TABLE 5 (top panel)     
 *------------------------ 
-do ..\progs\KeyPlayerAnalysis.do
+do ../progs/KeyPlayerAnalysis.do
 
 * Estimation of Confidence Intervals 
 global gamaselect "gen gamma= _b[ TotFight_Enemy] + _se[ TotFight_Enemy]" 
 global betaselect "gen beta= - _b[ TotFight_Allied] + _se[ TotFight_Allied]"
-do ..\progs\KeyPlayerAnalysis_plusSD.do
+do ../progs/KeyPlayerAnalysis_plusSD.do
 global gamaselect "gen gamma= _b[ TotFight_Enemy] - _se[ TotFight_Enemy]" 
 global betaselect "gen beta= - _b[ TotFight_Allied] - _se[ TotFight_Allied]"
-do ..\progs\KeyPlayerAnalysis_minusSD.do
+do ../progs/KeyPlayerAnalysis_minusSD.do
 
 *------------------------ 
 * SECTION 5.2 - ARMS EMBARGO
 *------------------------ 
 
 * For this Section the simulations are performed in Matlab
-* The corresponding Matlab code can be found in the subfolder \REPLICATION_FILES\progs\embargo_Matlab_progs
+* The corresponding Matlab code can be found in the subfolder /REPLICATION_FILES/progs/embargo_Matlab_progs
 
 *------------------------ 
 * SECTION 5.3 - PACIFICATION POLICIES
 * [incl. TABLE 6 AND FIGURES REPORTED IN THE TEXT]     
 *------------------------ 
 
-do  ..\progs\Targeted_rewiring.do
+do  ../progs/Targeted_rewiring.do
 
 * Estimation of Confidence Intervals 
 global gamaselect "gen gamma= _b[ TotFight_Enemy] + _se[ TotFight_Enemy]" 
 global betaselect "gen beta= - _b[ TotFight_Allied] + _se[ TotFight_Allied]"
-do ..\progs\Targeted_rewiring_plusSD.do
+do ../progs/Targeted_rewiring_plusSD.do
 global gamaselect "gen gamma= _b[ TotFight_Enemy] - _se[ TotFight_Enemy]" 
 global betaselect "gen beta= - _b[ TotFight_Allied] - _se[ TotFight_Allied]"
-do  ..\progs\Targeted_rewiring_minusSD
+do  ../progs/Targeted_rewiring_minusSD
 
 
 * -----------
 * Cleaning temporary files
 * -----------
-do  ..\progs\cleaning.do
+do  ../progs/cleaning.do
 
 
 
@@ -133,8 +133,8 @@ global baseline_logit "asclogit link  csf_surplus ,  case(dyad) alternatives(alt
 global unobs1 "qui replace success=1 if success==0"
 global unobs2 "qui replace success=1 if success==0"
 global unobs3 "qui replace success=1 if success==0"
-do ..\progs\endo_network_Estimation.do
-do ..\progs\endo_goodness_of_fit.do
+do ../progs/endo_network_Estimation.do
+do ../progs/endo_goodness_of_fit.do
 
 
 
@@ -149,7 +149,7 @@ global unobs3 "qui replace success=1 if success==0 & (a==1) & (V_allied+epsilon_
 global exo_endo ""
 global remove_violation ""
 * Generate the counterfactual networks: Estimation of the multinomial logit and DGP matrix of unobserved MC utility draw
-do ..\progs\endo_network_Estimation.do
+do ../progs/endo_network_Estimation.do
 
 qui use temp_counterfactual, clear
 qui sum group
@@ -158,7 +158,7 @@ qui scalar nb_group=r(max)
 **
 ** TABLE B.14 
 **
-do ..\progs\endo_network_Policy_KP.do
+do ../progs/endo_network_Policy_KP.do
 use endo_KeyPlayer_result, clear
 saveold endo_KeyPlayer_result_Conditional, replace
 
@@ -183,7 +183,7 @@ export excel using ../results/TABLE_B14.xls, replace first(varl)
 * TABLE 5 (bottom panel) Removal of Subset of Groups  **
 **
 
-do ..\progs\endo_network_Policy_remove_subset_groups.do
+do ../progs/endo_network_Policy_remove_subset_groups.do
 use endo_KPresult_foreign, clear
 saveold endo_Foreign_Conditional, replace
 use endo_KPresult_Large_Groups, clear
@@ -258,8 +258,8 @@ twoway (scatter endo_Delta_RD Delta_RD, mcolor(black) msymbol(none) mlabel(name)
 (scatter endo_Delta_RD Delta_RD , mcolor(black) msymbol(circle) ) ///
  (line Delta_RD Delta_RD, lcolor(gs8)  mlabsize(tiny) mlabcolor(blue)) , /// 
  ytitle(Rent Dissip. - Endogenous Network (pct)) xtitle(Rent Dissipation - Exogenous Network (pct)) title("Reduction in Rent Dissipation with exogenous/endogenous network", size(medium)) legend(off) scheme(s1mono)
-graph save "..\results\FIGURE4_left.gph", replace	
-graph export "..\results\FIGURE4_left.pdf", as(pdf) replace 
+graph save "../results/FIGURE4_left.gph", replace	
+graph export "../results/FIGURE4_left.pdf", as(pdf) replace 
 
 use endo_Foreign_Conditional, clear
 sum Delta_RD if mc_draw!=., d
@@ -267,19 +267,19 @@ twoway (histogram Delta_RD if mc_draw!=., xline(-0.2679, lc(blue)) xline(-0.4133
 text( 165 -.225 " exogenous network", color(blue) size(small)) ///
 text( 165 -.48 " endogenous network (median)", color(red) size(small)) ///
 legend (off) ytitle("# MC draws") xtitle("Change in Rent Dissipation (pct)") title("Effect of Removing Foreign Groups with exogenous/endogenous network", size(medium))
-graph save "..\results\FIGURE4_right.gph", replace	
-graph export "..\results\FIGURE4_right.pdf", as(pdf) replace 
+graph save "../results/FIGURE4_right.gph", replace	
+graph export "../results/FIGURE4_right.pdf", as(pdf) replace 
 
 
 **
 ** column 9 TABLE B.3 AND TABLE B.13
 **
 
-do ..\progs\instrumented_network.do
+do ../progs/instrumented_network.do
 
 
 * -----------
 * Cleaning temporary files
 * -----------
-do  ..\progs\cleaning.do
+do  ../progs/cleaning.do
 

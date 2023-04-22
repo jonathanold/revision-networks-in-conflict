@@ -41,7 +41,7 @@ qui{
 use temp_attrition.dta, clear
 replace p_attrition=`mis' if charac_large==0
 save temp_attrition.dta, replace
-use ..\original_data\all_africa_ext, clear
+use ../original_data/all_africa_ext, clear
 keep if GWNO==490
 drop if COUNTRY=="Burundi"
 drop if COUNTRY=="Central African Republic"
@@ -73,7 +73,7 @@ sum p_attrition_`var'
 drop p_attrition*
 
 qui save all_africa_ext_fake.dta, replace
-qui do ..\progs\bootstrap_build_base_AF.do
+qui do ../progs/bootstrap_build_base_AF.do
 
 qui use KRTZ_monadic_AF.dta, clear
 qui global controlsFE "govern_* foreign_* unpopular_* D96_* D30_* D41_* D471_*" 

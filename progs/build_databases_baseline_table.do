@@ -5,7 +5,7 @@
 ********************************************************/
 
 *coordinates
-use ..\original_data\LGM\MC.dta, clear
+use ../original_data/LGM/MC.dta, clear
 keep id LON LAT
 sort id 
 save lon_lat.dta, replace
@@ -15,7 +15,7 @@ clear all
 **********************************
 ** We re-label the variables
 **********************************
-use ..\original_data\all_africa_ext, clear
+use ../original_data/all_africa_ext, clear
 
 keep if GWNO==490
 drop if COUNTRY=="Burundi"
@@ -30,7 +30,7 @@ rename COUNTRY country
 keep year event country LATITUDE LONGITUDE id_ALLY_ACTOR_2B id_ALLY_ACTOR_1B id_ALLY_ACTOR_2 id_ACTOR2 id_ALLY_ACTOR_1 id_ACTOR1 ALLY_ACTOR_2B ALLY_ACTOR_1B FATALITIES ALLY_ACTOR_2 ACTOR2 ALLY_ACTOR_1 ACTOR1
 
 * We now merge/suppress several groups according to "obvious coding issues in ACLED dataset" 
- do ..\progs\recode_groups.do
+ do ../progs/recode_groups.do
 
 *KICK OUT MONUC
 foreach x of var ACTOR1 ACTOR2 ALLY_ACTOR_2 ALLY_ACTOR_1 ALLY_ACTOR_1B ALLY_ACTOR_2B{
@@ -649,8 +649,8 @@ save temp_post`num'.dta, replace
 ******************************************************
 
 * construction of the Cederman network
-do ..\progs\historical_hostilities_Cederman_updated.do
-import excel ..\original_data\ACLED_Cederman_and_al_merging_key_REVISED_DR.xls, sheet("Sheet1") firstrow clear
+do ../progs/historical_hostilities_Cederman_updated.do
+import excel ../original_data/ACLED_Cederman_and_al_merging_key_REVISED_DR.xls, sheet("Sheet1") firstrow clear
 rename idnew id
 destring CBR*, replace
 destring id, replace
@@ -1407,10 +1407,10 @@ sort group group_d year
 save KRTZ_dyadic_base_mt.dta,replace
 save KRTZ_base_mt.dta,replace
 save KRTZ_base_benchmark.dta, replace 
-do ..\progs\build_monadic.do
-do ..\progs\Build_new_IV_rainfall_mt.do 
+do ../progs/build_monadic.do
+do ../progs/Build_new_IV_rainfall_mt.do 
 use temp_rain, clear
-do ..\progs\recode_and_label_variables_before_regressions_dr.do
+do ../progs/recode_and_label_variables_before_regressions_dr.do
 count if degree_plus==0 & degree_minus==0
 distinct group if degree_plus==0 & degree_minus==0
  foreach var of varlist  rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 {
@@ -1425,7 +1425,7 @@ rename LON longitude
 rename LAT latitude
 drop if _merge==2
 drop _merge
-do ..\progs\covariates.do
+do ../progs/covariates.do
 sort id year
 save KRTZ_monadic_AF.dta, replace 		
 use KRTZ_dyadic_base_mt.dta, clear
@@ -1439,19 +1439,19 @@ cap erase mk_cbr.dta
 
 
 *Only battles
-do ..\progs\build_bases_battles.do
+do ../progs/build_bases_battles.do
 save temp_battle.dta, replace 		
 cap erase KRTZ_base_mt.dta
 cap erase KRTZ_dyadic_base_mt.dta
 
 *Superdataset (expanded dataset)
-do ..\progs\build_all_bases_superdataset_dr.do
+do ../progs/build_all_bases_superdataset_dr.do
 save temp_superdataset.dta, replace 		
 cap erase KRTZ_base_mt.dta
 cap erase KRTZ_dyadic_base_mt.dta
 
 *Updating ACLED coordinates with GED
-do ..\progs\Build_all_bases_updating_acled_coordinates_with_ged_when_evts_matched_dr.do
+do ../progs/Build_all_bases_updating_acled_coordinates_with_ged_when_evts_matched_dr.do
 save temp_ged_coord.dta, replace 		
 cap erase KRTZ_base_mt.dta
 cap erase KRTZ_dyadic_base_mt.dta

@@ -1,11 +1,12 @@
 
+
 *********************************************************
 ** Retrieve charact from enemies and from enemies of enemies
 *********************************************************
 global lag " 0"
 global aggregation "collapse (sum)"
 
-use ..\original_data\LGM\MC.dta, clear
+use ../original_data/LGM/MC.dta, clear
  
 ** Rainfall at the centroid of the fighting group
 keep id MCr*

@@ -1,7 +1,7 @@
 
 clear all
 set matsize 1000
-qui do  ..\progs\my_spatial_2sls
+qui do  ../progs/my_spatial_2sls
 
 *globals
 global lag_specif "	lag(1000000) dist(150) lagdist(1000000) partial"
@@ -23,7 +23,7 @@ global ENDO "TotFight_Enemy TotFight_Allied TotFight_Neutral "
 ** Balanced panel with expert coding windows of activity
 ****
 clear
-import excel using ..\original_data\windows_activity_groups_march16_fz.xls, first
+import excel using ../original_data/windows_activity_groups_march16_fz.xls, first
 keep id name group_start group_end militia* dummy*
 rename name name_fz
 destring group_start group_end militia*, replace

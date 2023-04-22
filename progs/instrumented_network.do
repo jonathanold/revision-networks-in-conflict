@@ -7,7 +7,7 @@ use KRTZ_dyadic_AF.dta, clear
 save KRTZ_dyadic_ref, replace
 
 
-qui do  ..\progs\my_spatial_2sls
+qui do  ../progs/my_spatial_2sls
 
 global clus "r cl(id)" 
 global lag_specif "lag(1000000) dist(150) lagdist(1000000) partial"
@@ -22,7 +22,7 @@ global struc_cov "geodist_dyad same_ethnic_greg same_Hutu_Tutsi different_Hutu_T
 global baseline_logit "asclogit link  csf_surplus ,  case(dyad) alternatives(alternative) casevars($network_cov $struc_cov  $FixedEffects)  basealternative(0)  diff  technique(bfgs)" 
 
 ** Construction of the Instruments based on predicted probabilities from the multinomial logit
-qui do ..\progs\instrumented_network_proba.do
+qui do ../progs/instrumented_network_proba.do
 
 **
 * TABLE B.3 Column 9
@@ -64,7 +64,7 @@ eststo: my_spatial_2sls TotFight meanc_rain0 sqmeanc_rain0 meanc_rain1 sqmeanc_r
 
 * col. 2
 clear
-import excel using ..\original_data\windows_activity_groups_march16_fz.xls, first
+import excel using ../original_data/windows_activity_groups_march16_fz.xls, first
 keep id name group_start group_end militia* dummy*
 rename name name_fz
 destring group_start group_end militia*, replace

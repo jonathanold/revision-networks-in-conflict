@@ -2,7 +2,7 @@
 *** Policy 1: drop foreign groups
 ***
 
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group FOREIGNGROUPS
 rename Group name 
 rename FOREIGNGROUPS Foreign_FZ
@@ -60,7 +60,7 @@ qui save temp_aplus, replace
 * w/o recomposition of the network
 *
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 * CAUTION !! THE MCref change after this subroutine. Do Not USE THEM FOR THE PURPOSE OF MERGING
 qui use simul, clear
 qui collapse (sum) EFFORT
@@ -81,7 +81,7 @@ save exo_KPresult_foreign, replace
 *
 
 * Generate counterfactual covariates
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 expand 3
 bysort MCref MCref_d: gen alternative=[_n]-2 
 keep MCref MCref_d alternative $network_cov
@@ -193,7 +193,7 @@ sort MCref MCref_d
 save temp_aplus, replace
 
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 
 * CAUTION !! THE MCref change after this subroutine. Do Not USE THEM FOR THE PURPOSE OF MERGING
 qui use simul, clear
@@ -312,7 +312,7 @@ qui save temp_aplus, replace
 * w/o recomposition of the network
 *
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 * CAUTION !! THE MCref change after this subroutine. Do Not USE THEM FOR THE PURPOSE OF MERGING
 qui use simul, clear
 qui collapse (sum) EFFORT
@@ -334,7 +334,7 @@ save exo_KPresult_Large_Groups, replace
 *
 
 * Generate counterfactual covariates 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 expand 3
 bysort MCref MCref_d: gen alternative=[_n]-2 
 keep MCref MCref_d alternative $network_cov
@@ -435,7 +435,7 @@ sort MCref MCref_d
 save temp_aplus, replace
 
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 
 qui use simul, clear
 qui collapse (sum) EFFORT
@@ -509,7 +509,7 @@ save endo_KPresult_Large_Groups, replace
 ***
 
 
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group ITURI
 rename Group name 
 destring ITURI, gen(Ituri)
@@ -570,7 +570,7 @@ qui save temp_aplus, replace
 * w/o recomposition of the network
 *
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -589,7 +589,7 @@ save exo_KPresult_Ituri, replace
 * with endogenous recomposition of the network
 *
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 expand 3
 bysort MCref MCref_d: gen alternative=[_n]-2 
 keep MCref MCref_d alternative $network_cov
@@ -693,7 +693,7 @@ sort MCref MCref_d
 save temp_aplus, replace
 
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 
 qui use simul, clear
 qui collapse (sum) EFFORT
@@ -763,7 +763,7 @@ save endo_KPresult_Ituri, replace
 *** RCD&UG&RWA groups
 ***
 
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group RCDUGRWA
 rename Group name 
 destring RCDUGRWA, gen(remove)
@@ -823,7 +823,7 @@ qui save temp_aplus, replace
 * w/o recomposition of the network
 *
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -842,7 +842,7 @@ save exo_KPresult_RCD_UG_RWA, replace
 * with endogenous recomposition of the network
 *
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 expand 3
 bysort MCref MCref_d: gen alternative=[_n]-2 
 keep MCref MCref_d alternative $network_cov
@@ -945,7 +945,7 @@ sort MCref MCref_d
 save temp_aplus, replace
 
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 
 qui use simul, clear
 qui collapse (sum) EFFORT
@@ -1015,7 +1015,7 @@ save endo_KPresult_RCD_UG_RWA, replace
 *** FDLR&INTER&HUTU groups
 ***
 
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group FDLRINTERHUTU
 rename Group name 
 rename FDLRINTERHUTU remove 
@@ -1076,7 +1076,7 @@ qui save temp_aplus, replace
 * w/o recomposition of the network
 *
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -1095,7 +1095,7 @@ save exo_KPresult_FDLR_INTER_HUTU, replace
 * with endogenous recomposition of the network
 *
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 expand 3
 bysort MCref MCref_d: gen alternative=[_n]-2 
 keep MCref MCref_d alternative $network_cov
@@ -1198,7 +1198,7 @@ sort MCref MCref_d
 save temp_aplus, replace
 
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 
 qui use simul, clear
 qui collapse (sum) EFFORT

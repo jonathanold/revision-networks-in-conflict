@@ -58,7 +58,7 @@ foreach num of numlist 1(1)8 {
 
 set seed 24081972 
 
-use ..\original_data\all_africa_ext, clear
+use ../original_data/all_africa_ext, clear
 keep if GWNO==490
 drop if COUNTRY=="Burundi"
 drop if COUNTRY=="Central African Republic"
@@ -87,7 +87,7 @@ qui keep if _merge==3
 qui drop _merge
 qui drop obs
 qui save all_africa_ext_fake.dta, replace
-qui do ..\progs\bootstrap_build_base.do
+qui do ../progs/bootstrap_build_base.do
 
 global clus "r cl(id)" 
 global controlsFE_reduced  "D96_* D30_* D41_* D471_*" 

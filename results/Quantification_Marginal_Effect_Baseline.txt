@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/jonathanold/Library/CloudStorage/GoogleDrive-jonathan_old@berkeley.edu/My Drive/_Berkeley Research/Networks in Conflict/github/rev
+> ision-networks-in-conflict/regressions/../results/Quantification_Marginal_Effect_Baseline.txt
+  log type:  text
+ opened on:  21 Apr 2023, 13:56:41
+
+. set linesize 150
+
+. di " A one SD increase in TFE (" SD_TotFight_Enemy " events) translates into a " ME_Enemy " SD increase in TotFight (" ME_Enemy_nb " events) "
+ A one SD increase in TFE (80 events) translates into a .58 SD increase in TotFight (10 events) 
+
+. di " A one SD increase in TFA (" SD_TotFight_Allied " events) translates into a " ME_Allied " SD increase in TotFight (" ME_Allied_nb " events)"
+ A one SD increase in TFA (62 events) translates into a -.42 SD increase in TotFight (-7 events)
+
+. log close
+      name:  <unnamed>
+       log:  /Users/jonathanold/Library/CloudStorage/GoogleDrive-jonathan_old@berkeley.edu/My Drive/_Berkeley Research/Networks in Conflict/github/rev
+> ision-networks-in-conflict/regressions/../results/Quantification_Marginal_Effect_Baseline.txt
+  log type:  text
+ closed on:  21 Apr 2023, 13:56:41
+------------------------------------------------------------------------------------------------------------------------------------------------------

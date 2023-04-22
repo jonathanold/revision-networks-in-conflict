@@ -172,7 +172,7 @@ save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
 global time "1998(1)2010"
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save bench_simul, replace
 
@@ -208,7 +208,7 @@ use bench_aminus, clear
 save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save avgbench_simul, replace
 collapse(sum) EFFORT
@@ -312,7 +312,7 @@ qui drop IDlink IDlink_d
 qui save temp_aminus, replace
  
 qui global time "1000"
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui keep EFFORT year MCref
 qui collapse (sum) EFFORT 

@@ -2,7 +2,7 @@
 ************************************************************
 * This program builds the CSF surplus for the three alternatives
 * Required Inputs:  avgbench_data.dta, bench_aminus.dta, bench_aplus.dta   
-* Subroutine ..\progs\eq_simul.do
+* Subroutine ../progs/eq_simul.do
 * Output csf_surplus.dta
 ************************************************************
 
@@ -65,7 +65,7 @@ qui keep MCref share
 qui sort MCref
 qui save temp_share.dta, replace
 qui global time "1000" 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui keep EFFORT year MCref
 qui keep if MCref==`g' | MCref==`g_d' 
 qui merge MCref using temp_share
@@ -101,7 +101,7 @@ qui keep MCref share
 qui sort MCref
 qui save temp_share.dta, replace
 qui global time "1000" 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui keep EFFORT year MCref
 qui keep if MCref==`g' | MCref==`g_d' 
 qui merge MCref using temp_share
@@ -137,7 +137,7 @@ qui keep MCref share
 qui sort MCref
 qui save temp_share.dta, replace
 qui global time "1000" 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui keep EFFORT year MCref
 qui keep if MCref==`g' | MCref==`g_d' 
 qui merge MCref using temp_share

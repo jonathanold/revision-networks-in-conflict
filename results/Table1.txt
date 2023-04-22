@@ -1,0 +1,36 @@
+-------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/jonathanold/Library/CloudStorage/GoogleDr
+> ive-jonathan_old@berkeley.edu/My Drive/_Berkeley Research/N
+> etworks in Conflict/github/revision-networks-in-conflict/re
+> gressions/../results/Table1.txt
+  log type:  text
+ opened on:  21 Apr 2023, 13:56:40
+
+. set linesize 150
+
+. esttab, keep(TotFight_Enemy TotFight_Allied TotFight_Neutral) pr2 r2 starlevels(* 0.1 ** 0.05 *** 0.01)  b(%4.3f) se(%4.3f) label scalars(meanprob) 
+> nogaps nolines nodepvars
+
+                              (1)             (2)             (3)             (4)             (5)             (6)             (7)             (8)   
+                             est1            est2            est3            est4            est5            est6            est7            est8   
+Tot. Fight. Enemies         0.066***        0.130**         0.066***        0.083***        0.081***        0.091***        0.084***        0.125***
+                          (0.016)         (0.057)         (0.019)         (0.019)         (0.020)         (0.022)         (0.019)         (0.039)   
+Tot. Fight Allies           0.001          -0.218**        -0.117***       -0.114***       -0.117***       -0.157***       -0.112***       -0.117***
+                          (0.017)         (0.086)         (0.035)         (0.033)         (0.037)         (0.058)         (0.032)         (0.036)   
+Total Fight. of Ne~s                                                        0.004           0.004           0.013           0.004           0.006   
+                                                                          (0.004)         (0.005)         (0.013)         (0.004)         (0.004)   
+Observations                 1040            1040            1040            1040             988             598            1040            1781   
+R-squared                                                                                                                                           
+Pseudo R-squared                                                                                                                                    
+meanprob                                                                                                                                            
+Standard errors in parentheses
+* p<0.1, ** p<0.05, *** p<0.01
+
+. log close
+      name:  <unnamed>
+       log:  /Users/jonathanold/Library/CloudStorage/GoogleDrive-jonathan_old@berkeley.edu/My Drive/_Berkeley Research/Networks in Conflict/github/rev
+> ision-networks-in-conflict/regressions/../results/Table1.txt
+  log type:  text
+ closed on:  21 Apr 2023, 13:56:40
+------------------------------------------------------------------------------------------------------------------------------------------------------

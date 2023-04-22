@@ -44,7 +44,7 @@ qui sort MCref MCref_d
 qui save temp_aplus, replace
 
 * Generate counterfactual covariates
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 qui expand 3
 qui bysort MCref MCref_d: gen alternative=[_n]-2 
 qui keep MCref MCref_d alternative $network_cov
@@ -145,7 +145,7 @@ qui keep MCref MCref_d aplus
 qui sort MCref MCref_d
 qui save temp_aplus, replace
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui gen mc_draw=`d'
 qui append using endo_KPcounter_simul_`kp'

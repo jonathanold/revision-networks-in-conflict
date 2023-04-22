@@ -113,7 +113,7 @@ capture erase temp_mt.dta
 use KRTZ_monadic_base_mt.dta,clear
 sort id year
 save masterdata_DRC_temp, replace
-use ..\original_data\controls_all.dta 
+use ../original_data/controls_all.dta 
 rename YEAR year
 sort id year
 save controls_recoded.dta, replace
@@ -129,7 +129,7 @@ erase controls_recoded.dta
 
 
 *** ADD TOTAL FIGHTING OUTSIDE DRC
-do ..\progs\Create_control_total_fighting_everywhere_but_DRC.do
+do ../progs/Create_control_total_fighting_everywhere_but_DRC.do
 use masterdata_DRC, clear
 sort id year
 merge id year using total_fighting_Africa_exclDRC.dta

@@ -163,7 +163,7 @@ use bench_aminus, clear
 save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save avgbench_simul, replace
 collapse(sum) EFFORT
@@ -175,13 +175,13 @@ scalar bench_rd = EFFORT
 
 * Build the CSF joint surplus matrix for all alternatives
 * Caution: HIGH COMPUTATION TIME ! 
-* do ..\progs\endo_CSF_surplus_all_alternatives 
+* do ../progs/endo_CSF_surplus_all_alternatives 
 * An alternative and faster option is to use directly the outcome dataset of the previous subroutine - This is what we do below
-use ..\original_data\csf_surplus.dta, clear
+use ../original_data/csf_surplus.dta, clear
 save csf_surplus.dta, replace
 
 * Build the network related covariates for all alternatives
- do ..\progs\network_related_covariates_alternatives_Fast.do
+ do ../progs/network_related_covariates_alternatives_Fast.do
 
 * Build and append the matrix of realized alternatives
 use bench_aplus, clear
@@ -228,7 +228,7 @@ drop _merge*
 * retrieve the structural covariates
 save temp_struc_cov.dta, replace
 
-use ..\original_data\endo_structural_covariates.dta,clear
+use ../original_data/endo_structural_covariates.dta,clear
 save temp_structural_covariates.dta, replace
 
 use acled_KRTZ_identifiers.dta, clear

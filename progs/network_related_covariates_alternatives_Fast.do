@@ -1,7 +1,7 @@
 ************************************************************
 * This program builds the network related covariates
 * Required Inputs:  avgbench_data.dta, bench_aminus.dta, bench_aplus.dta   
-* Subroutine ..\progs\compute_network_related_covariates.do
+* Subroutine ../progs/compute_network_related_covariates.do
 * Output temp_cov.dta
 ************************************************************
 
@@ -28,7 +28,7 @@ order alternative MCref MCref_d group group_d name name_d
 sort MCref MCref_d alternative
 save temp_cov.dta, replace
 
-qui do ..\progs\compute_network_related_covariates.do
+qui do ../progs/compute_network_related_covariates.do
 merge MCref MCref_d using temp_cov.dta
 tab _merge
 drop _merge

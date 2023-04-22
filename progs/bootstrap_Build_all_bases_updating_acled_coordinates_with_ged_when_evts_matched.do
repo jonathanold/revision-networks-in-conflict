@@ -8,7 +8,7 @@
 *now standard code *
 ********************
 
-use ..\original_data\ROB6\MC.dta, clear
+use ../original_data/ROB6/MC.dta, clear
 keep id LON LAT
 sort id 
 save lon_lat.dta, replace
@@ -33,7 +33,7 @@ rename YEAR year
 rename COUNTRY country
 keep year event country LATITUDE LONGITUDE id_ALLY_ACTOR_2B id_ALLY_ACTOR_1B id_ALLY_ACTOR_2 id_ACTOR2 id_ALLY_ACTOR_1 id_ACTOR1 ALLY_ACTOR_2B ALLY_ACTOR_1B FATALITIES ALLY_ACTOR_2 ACTOR2 ALLY_ACTOR_1 ACTOR1
 
- do ..\progs\recode_groups.do
+ do ../progs/recode_groups.do
 
 **
 
@@ -660,8 +660,8 @@ save temp_post`num'.dta, replace
 ******************************************************
 
 * construction of the Cederman network
-do ..\progs\historical_hostilities_Cederman_updated.do
-import excel ..\original_data\ACLED_Cederman_and_al_merging_key_REVISED_DR.xls, sheet("Sheet1") firstrow clear
+do ../progs/historical_hostilities_Cederman_updated.do
+import excel ../original_data/ACLED_Cederman_and_al_merging_key_REVISED_DR.xls, sheet("Sheet1") firstrow clear
 rename idnew id
 destring CBR*, replace
 destring id, replace
@@ -1418,10 +1418,10 @@ sort group group_d year
 save KRTZ_dyadic_base_mt.dta,replace
 save KRTZ_base_mt.dta,replace
 save KRTZ_base_benchmark.dta, replace 
-do ..\progs\build_monadic.do
-do ..\progs\build_IV_rainfall_ROB6.do
+do ../progs/build_monadic.do
+do ../progs/build_IV_rainfall_ROB6.do
 use temp_rain, clear
-do ..\progs\recode_and_label_variables_before_regressions_dr.do
+do ../progs/recode_and_label_variables_before_regressions_dr.do
 count if degree_plus==0 & degree_minus==0
 distinct group if degree_plus==0 & degree_minus==0
  foreach var of varlist  rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 {

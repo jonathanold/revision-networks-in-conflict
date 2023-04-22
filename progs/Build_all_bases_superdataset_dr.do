@@ -4,7 +4,7 @@
 * - second builds the masterdata using the subprograms build_monadic.do and Build_new_IV_rainfall_mt.do and recode_and_label_variables_before_regressions_dr.do
 ********************************************************/
 
-use ..\original_data\ROB5\MC.dta, clear
+use ../original_data/ROB5/MC.dta, clear
 keep id LON LAT
 sort id 
 save lon_lat.dta, replace
@@ -14,7 +14,7 @@ clear all
 **********************************
 ** We re-label the variables
 **********************************
-use ..\original_data\superdataset_ged_coordinates, clear
+use ../original_data/superdataset_ged_coordinates, clear
 drop if year<=1997
 drop if year==2011
 
@@ -594,8 +594,8 @@ save temp_post`num'.dta, replace
 ******************************************************
 
 * construction of the Cederman network
-do ..\progs\historical_hostilities_Cederman_updated.do
-import excel ..\original_data\ACLED_Cederman_and_al_merging_key_REVISED_DR.xls, sheet("Sheet1") firstrow clear
+do ../progs/historical_hostilities_Cederman_updated.do
+import excel ../original_data/ACLED_Cederman_and_al_merging_key_REVISED_DR.xls, sheet("Sheet1") firstrow clear
 rename idnew id
 destring CBR*, replace
 destring id, replace
@@ -1352,10 +1352,10 @@ sort group group_d year
 save KRTZ_dyadic_base_mt.dta,replace
 save KRTZ_base_mt.dta,replace
 save KRTZ_base_benchmark.dta, replace 
-do ..\progs\build_monadic.do
-do ..\progs\build_IV_rainfall_ROB5.do 
+do ../progs/build_monadic.do
+do ../progs/build_IV_rainfall_ROB5.do 
 use temp_rain, clear
-do ..\progs\recode_and_label_variables_before_regressions_dr.do
+do ../progs/recode_and_label_variables_before_regressions_dr.do
 count if degree_plus==0 & degree_minus==0
 distinct group if degree_plus==0 & degree_minus==0
  foreach var of varlist  rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 {
@@ -1370,5 +1370,5 @@ rename LON longitude
 rename LAT latitude
 drop if _merge==2
 drop _merge
-do ..\progs\covariates.do
+do ../progs/covariates.do
 sort id year

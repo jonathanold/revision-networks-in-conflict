@@ -5,7 +5,7 @@
 global lag " 0"
 global aggregation "collapse (sum)"
 
-use ..\original_data\ROB5\MC.dta, clear
+use ../original_data/ROB5/MC.dta, clear
  
 ** Rainfall at the centroid of the fighting group
 keep id MCr*

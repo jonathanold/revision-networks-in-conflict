@@ -173,7 +173,7 @@ save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
 global time "1998(1)2010"
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save bench_simul, replace
 
@@ -212,7 +212,7 @@ use bench_aminus, clear
 save temp_aminus, replace
 use bench_aplus, clear
 save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 use simul, clear
 save avgbench_simul, replace
 collapse(sum) EFFORT
@@ -260,7 +260,7 @@ qui drop if MCref_d==RWApost & `kp'==RWApre
 qui drop if MCref_d==RWApre & `kp'==RWApost
 qui sort MCref MCref_d
 qui save temp_aplus, replace
-qui qui do ..\progs\eq_simul.do
+qui qui do ../progs/eq_simul.do
 qui use simul, clear
 qui save KPcounter_simul_`kp', replace
 }
@@ -359,7 +359,7 @@ export excel using ../results/KeyPlayer_result.xls, replace first(varl)
 **********************
 
 ** Remove foreign groups
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group FOREIGNGROUPS
 rename Group name 
 rename FOREIGNGROUPS Foreign_FZ
@@ -423,7 +423,7 @@ erase trash.dta
 erase trash_d.dta
 qui sort MCref MCref_d
 qui save temp_aplus, replace
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -504,7 +504,7 @@ erase trash_d.dta
 qui sort MCref MCref_d
 qui save temp_aplus, replace
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -532,7 +532,7 @@ tab obs_share
 log close
 
 ** Remove ITURI-related groups
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group ITURI
 rename Group name 
 destring ITURI, gen(Ituri)
@@ -597,7 +597,7 @@ erase trash_d.dta
 qui sort MCref MCref_d
 qui save temp_aplus, replace
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -626,7 +626,7 @@ log close
 
 
 ** Remove RCD&UG&RWA groups
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group RCDUGRWA
 rename Group name 
 destring RCDUGRWA, gen(remove)
@@ -691,7 +691,7 @@ erase trash_d.dta
 qui sort MCref MCref_d
 qui save temp_aplus, replace
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD
@@ -718,7 +718,7 @@ tab obs_share
 log close
 
 ** Remove FDLR&INTER&HUTU groups
-import excel using ..\original_data\coding_characteristics_FZ.xls, clear first
+import excel using ../original_data/coding_characteristics_FZ.xls, clear first
 keep Group FDLRINTERHUTU
 rename Group name 
 rename FDLRINTERHUTU remove 
@@ -783,7 +783,7 @@ erase trash_d.dta
 qui sort MCref MCref_d
 qui save temp_aplus, replace
 
-qui do ..\progs\eq_simul.do
+qui do ../progs/eq_simul.do
 qui use simul, clear
 qui collapse (sum) EFFORT
 qui rename EFFORT counter_RD

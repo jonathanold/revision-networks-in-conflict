@@ -1,6 +1,6 @@
 clear all
 
-use ..\original_data\all_africa_ext, clear
+use ../original_data/all_africa_ext, clear
 drop if YEAR==2011
 drop if GWNO==490
 
