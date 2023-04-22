@@ -17,11 +17,6 @@
 
 
 *------------------------
-* Build Bases for Baseline Table
-*------------------------
-qui do "${code}/build_databases_baseline_table.do"
-
-*------------------------
 * Define globals
 *------------------------
 
