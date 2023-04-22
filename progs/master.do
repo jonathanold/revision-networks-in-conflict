@@ -42,7 +42,7 @@ cap mkdir ./replication_outputs/figures
 
 cd "${main}/regressions"
 
-global code     "${main}/progs/"
+global code  "${main}/progs/"
 
 
 

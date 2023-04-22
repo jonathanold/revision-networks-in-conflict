@@ -86,23 +86,3 @@ esttab, keep(TotFight_Enemy TotFight_Allied TotFight_Neutral) pr2 r2 starlevels(
 log close
 eststo clear
 
-
-* Quantification Baseline Marginal Effects - col. 4
-ivreg2 TotFight meanc_rain0 sqmeanc_rain0 meanc_rain1 sqmeanc_rain1 Dgroup* $controlsFE (TotFight_Enemy TotFight_Allied TotFight_Neutral = rain_enemies0 sqrain_enemies0 rain_allies0 sqrain_allies0 rain_enemies1 sqrain_enemies1 rain_allies1 sqrain_allies1 rain_enemies_enemies0 sqrain_enemies_enemies0 rain_enemies_of_allies0 sqrain_enemies_of_allies0 rain_enemies_enemies1 sqrain_enemies_enemies1 rain_enemies_of_allies1 sqrain_enemies_of_allies1 rain_neutral0 sqrain_neutral0 rain_neutral1 sqrain_neutral1) 
-sum TotFight
-scalar SD_TotFight=r(sd)
-sum TotFight_Enemy
-scalar SD_TotFight_Enemy=round(r(sd))
-sum TotFight_Allied
-scalar SD_TotFight_Allied=round(r(sd))
-scalar ME_Enemy_nb= round(SD_TotFight_Enemy * _b[TotFight_Enemy]) 
-scalar ME_Allied_nb= round(SD_TotFight_Allied * _b[TotFight_Allied]) 
-scalar ME_Enemy= round(SD_TotFight_Enemy * _b[TotFight_Enemy] / SD_TotFight, .01)
-scalar ME_Allied= round(SD_TotFight_Allied * _b[TotFight_Allied] / SD_TotFight, .01)
-log using ../results/Quantification_Marginal_Effect_Baseline.txt, text replace
-set linesize 150
-di " A one SD increase in TFE (" SD_TotFight_Enemy " events) translates into a " ME_Enemy " SD increase in TotFight (" ME_Enemy_nb " events) "
-di " A one SD increase in TFA (" SD_TotFight_Allied " events) translates into a " ME_Allied " SD increase in TotFight (" ME_Allied_nb " events)"
-log close
-
-
